@@ -399,8 +399,49 @@
 <!-- Music toggle -->
 <button class="music-btn" id="musicBtn" title="Toggle music">🎵</button>
 
-<!-- Background music (royalty-free birthday melody via Web Audio API) -->
-<audio id="bgAudio" loop></audio>
+<!-- MOBILE TAP TO START OVERLAY -->
+<div id="tapOverlay" style="
+  position:fixed; inset:0; z-index:9000;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  background:rgba(30,0,20,0.6);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  cursor:pointer;
+">
+  <div style="
+    background:rgba(255,255,255,0.15);
+    border:2px solid rgba(255,255,255,0.4);
+    border-radius:28px;
+    padding:36px 44px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(255,80,140,0.35);
+    max-width:340px; width:90%;
+  ">
+    <div style="font-size:72px;">🎂</div>
+    <div style="
+      font-family:'Pacifico',cursive;
+      font-size:clamp(1.3rem,5vw,1.9rem);
+      color:#fff;
+      margin:14px 0 8px;
+      text-shadow:0 2px 16px rgba(255,100,180,0.9);
+    ">Happy Birthday<br/>Gnanamai! 🎉</div>
+    <div style="color:rgba(255,255,255,0.82); font-family:'Quicksand',sans-serif; font-size:0.95rem; margin-bottom:22px; line-height:1.6;">
+      Tap anywhere to enter<br/>& start the music 🎵🎻🎹
+    </div>
+    <div id="tapBtn" style="
+      background:linear-gradient(135deg,#ff4d8b,#c9a0ff);
+      color:white;
+      font-family:'Quicksand',sans-serif;
+      font-weight:700;
+      font-size:1.1rem;
+      padding:14px 36px;
+      border-radius:50px;
+      box-shadow:0 8px 28px rgba(255,80,140,0.55);
+      display:inline-block;
+    ">✨ Tap to Begin ✨</div>
+  </div>
+</div>
 
 <script>
 // ── STARS ──
@@ -825,19 +866,40 @@ function stopMusic() {
 }
 
 const musicBtn = document.getElementById('musicBtn');
-musicBtn.addEventListener('click', () => {
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
   musicOn = !musicOn;
   if (musicOn) { buildMusic(); musicBtn.textContent = '🔊'; musicBtn.title = 'Mute music'; }
   else         { stopMusic();  musicBtn.textContent = '🎵'; musicBtn.title = 'Play music'; }
 });
 
-// Auto-start on first user interaction
-document.addEventListener('click', () => {
+// ── MOBILE TAP OVERLAY ──
+// iOS & Android require a real user gesture (touchend/click) to unlock AudioContext
+const tapOverlay = document.getElementById('tapOverlay');
+
+function startExperience() {
+  // Remove overlay with fade
+  tapOverlay.style.transition = 'opacity 0.6s ease';
+  tapOverlay.style.opacity = '0';
+  tapOverlay.style.pointerEvents = 'none';
+  setTimeout(() => tapOverlay.remove(), 700);
+
+  // Start music — this runs inside a real user gesture so iOS allows it
   if (!musicOn) {
     musicOn = true;
     buildMusic();
     musicBtn.textContent = '🔊';
   }
+}
+
+// Listen for both touch (mobile) and click (desktop)
+tapOverlay.addEventListener('touchend', (e) => {
+  e.preventDefault();
+  startExperience();
+}, { once: true, passive: false });
+
+tapOverlay.addEventListener('click', () => {
+  startExperience();
 }, { once: true });
 </script>
 </body>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Gnanamai 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --pink: #ff8fab;
+    --peach: #ffb347;
+    --lavender: #c9b8ff;
+    --mint: #a8edca;
+    --gold: #ffd700;
+    --cream: #fff8f0;
+    --deep-pink: #ff4d8b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffd6e7 0%, #ffe8cc 25%, #e8d5ff 50%, #d5f5e3 75%, #ffd6e7 100%);
+    background-size: 400% 400%;
+    animation: gradShift 8s ease infinite;
+    cursor: default;
+  }
+
+  @keyframes gradShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* ── STARS / SPARKLES ── */
+  .stars-layer {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--d) ease-in-out infinite var(--delay);
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%,100% { opacity: 0; transform: scale(0.5); }
+    50%      { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* ── FLOATING ELEMENTS ── */
+  .float-layer {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
+  }
+  .floater {
+    position: absolute;
+    bottom: -120px;
+    font-size: var(--fs);
+    animation: floatUp var(--dur) linear var(--del) infinite;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.9; }
+    25%  { transform: translateY(-25vh) rotate(15deg) scale(1.05); }
+    50%  { transform: translateY(-50vh) rotate(-10deg) scale(0.95); }
+    75%  { transform: translateY(-75vh) rotate(12deg) scale(1.02); }
+    100% { transform: translateY(-110vh) rotate(-5deg) scale(0.85); opacity: 0; }
+  }
+
+  /* ── GLITTER PARTICLES ── */
+  .glitter-particle {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 999;
+    animation: glitterFall var(--gd) linear forwards;
+  }
+  @keyframes glitterFall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(120px) rotate(720deg); opacity: 0; }
+  }
+
+  /* ── MAIN WRAPPER ── */
+  .main {
+    position: relative; z-index: 10;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  /* ── CAKE ICON ── */
+  .cake-wrap {
+    font-size: 90px;
+    animation: cakeBounce 2s ease-in-out infinite, fadeSlideIn 1s ease 0.2s both;
+    filter: drop-shadow(0 8px 24px rgba(255,100,150,0.4));
+    margin-bottom: 10px;
+  }
+  @keyframes cakeBounce {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-12px) scale(1.07); }
+  }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TITLE ── */
+  .title-card {
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 28px;
+    padding: 32px 40px 28px;
+    box-shadow: 0 12px 48px rgba(255,130,180,0.25), 0 2px 12px rgba(255,255,255,0.5) inset;
+    animation: fadeSlideIn 1s ease 0.5s both;
+    max-width: 680px; width: 100%;
+  }
+
+  .title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    background: linear-gradient(135deg, #ff4d8b, #ff8fab, #c9a0ff, #ffb347);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradShift 4s ease infinite, glowPulse 2.5s ease-in-out infinite;
+    line-height: 1.3;
+    text-shadow: none;
+  }
+  @keyframes glowPulse {
+    0%,100% { filter: drop-shadow(0 0 8px rgba(255,100,180,0.5)); }
+    50%      { filter: drop-shadow(0 0 22px rgba(200,130,255,0.8)); }
+  }
+
+  .subtitle-line {
+    margin-top: 6px;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: #b06090;
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: fadeSlideIn 1s ease 0.8s both;
+  }
+
+  /* ── MESSAGE ── */
+  .message-box {
+    margin-top: 22px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 18px;
+    padding: 18px 22px;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: #7a4060;
+    line-height: 1.8;
+    font-weight: 500;
+    animation: fadeSlideIn 1s ease 1s both;
+    border: 1px solid rgba(255,200,220,0.5);
+  }
+  .message-box span { font-size: 1.1em; }
+
+  /* ── CONFETTI STRIP ── */
+  .confetti-strip {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin: 18px 0 22px;
+    animation: fadeSlideIn 1s ease 1.2s both;
+  }
+  .confetti-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    animation: dotPop 1.5s ease-in-out infinite;
+  }
+  @keyframes dotPop {
+    0%,100% { transform: scale(1) rotate(0deg); }
+    50%      { transform: scale(1.5) rotate(180deg); }
+  }
+
+  /* ── BUTTON ── */
+  .surprise-btn {
+    font-family: 'Quicksand', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: 700;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff4d8b, #ff8fab, #c9a0ff);
+    background-size: 200% 200%;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 28px rgba(255,80,140,0.45), 0 2px 8px rgba(200,130,255,0.3);
+    animation: gradShift 3s ease infinite, fadeSlideIn 1s ease 1.4s both, btnPulse 2s ease-in-out infinite 2.5s;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative; overflow: hidden;
+  }
+  .surprise-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0.18);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .surprise-btn:hover::before { opacity: 1; }
+  .surprise-btn:hover  { transform: translateY(-4px) scale(1.04); box-shadow: 0 14px 36px rgba(255,80,140,0.55); }
+  .surprise-btn:active { transform: scale(0.96); }
+  @keyframes btnPulse {
+    0%,100% { box-shadow: 0 8px 28px rgba(255,80,140,0.45); }
+    50%      { box-shadow: 0 8px 48px rgba(200,130,255,0.75), 0 0 0 8px rgba(255,80,140,0.08); }
+  }
+
+  /* ── POPUP OVERLAY ── */
+  .overlay {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(80,0,40,0.35);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .overlay.active { opacity: 1; pointer-events: all; }
+
+  .popup {
+    background: linear-gradient(145deg, #fff0f8, #f5eeff, #fff8ee);
+    border-radius: 28px;
+    padding: 40px 36px 36px;
+    max-width: 500px; width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(200,80,150,0.3), 0 4px 16px rgba(0,0,0,0.08);
+    border: 2px solid rgba(255,200,230,0.7);
+    transform: scale(0.7) translateY(40px);
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative; overflow: hidden;
+  }
+  .overlay.active .popup { transform: scale(1) translateY(0); }
+
+  .popup::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(255,180,220,0.4), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .popup-icon { font-size: 64px; animation: cakeBounce 2s ease-in-out infinite; }
+  .popup-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    background: linear-gradient(135deg, #ff4d8b, #c9a0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 10px 0 16px;
+  }
+  .popup-msg {
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    color: #7a4060;
+    line-height: 1.85;
+    font-weight: 500;
+  }
+  .popup-close {
+    margin-top: 22px;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff8fab, #c9a0ff);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(200,130,255,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .popup-close:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(200,130,255,0.55); }
+
+  /* ── SPARKLE CURSOR TRAIL ── */
+  .cursor-spark {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    animation: sparkFade 0.7s ease forwards;
+  }
+  @keyframes sparkFade {
+    0%   { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(0) rotate(120deg); opacity: 0; }
+  }
+
+  /* ── PHOTO FRAME ACCENT ── */
+  .deco-row {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    margin-top: 20px;
+    animation: fadeSlideIn 1s ease 1.6s both;
+  }
+  .deco-badge {
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,180,210,0.6);
+    border-radius: 30px;
+    padding: 7px 16px;
+    font-size: 0.9rem;
+    color: #a0508a;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ── BOTTOM NOTE ── */
+  .footer-note {
+    margin-top: 28px;
+    font-size: 0.82rem;
+    color: rgba(160,80,130,0.6);
+    animation: fadeSlideIn 1s ease 1.8s both;
+  }
+
+  /* ── MUSIC TOGGLE ── */
+  .music-btn {
+    position: fixed; bottom: 20px; right: 20px; z-index: 200;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(10px);
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(255,100,160,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeSlideIn 1s ease 2s both;
+  }
+  .music-btn:hover { transform: scale(1.15); box-shadow: 0 6px 22px rgba(255,100,160,0.5); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .title-card { padding: 24px 20px 20px; }
+    .popup { padding: 30px 22px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars layer -->
+<div class="stars-layer" id="starsLayer"></div>
+
+<!-- Floating emojis layer -->
+<div class="float-layer" id="floatLayer"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="cake-wrap">🎂</div>
+
+  <div class="title-card">
+    <h1 class="title">Happy Birthday Gnanamai 🎉</h1>
+    <p class="subtitle-line">✨ Wishing you the most magical day ✨</p>
+
+    <div class="message-box">
+      <span>🌸</span> Hey Gnanamai! Today is YOUR day — a day as bright, beautiful, and
+      full of joy as you are. May every moment be filled with laughter, love, and all
+      the sweetness life has to offer. The world is better with you in it, and I'm so
+      lucky to call you my friend. Shine on, superstar! <span>⭐</span>
+    </div>
+
+    <div class="confetti-strip" id="confettiStrip"></div>
+
+    <button class="surprise-btn" id="surpriseBtn">Click for Surprise 🎁</button>
+
+    <div class="deco-row">
+      <span class="deco-badge">🌷 Blessed Day</span>
+      <span class="deco-badge">🎈 Big Smiles</span>
+      <span class="deco-badge">💫 Dream Big</span>
+      <span class="deco-badge">🍰 Sweet Life</span>
+    </div>
+  </div>
+
+  <p class="footer-note">Made with 💗 just for you, Gnanamai</p>
+</div>
+
+<!-- POPUP -->
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="popup-icon">🎁</div>
+    <div class="popup-title">A Special Note for You 💌</div>
+    <p class="popup-msg">
+      Gnanamai, you are one of the most genuine, kind-hearted souls I know.
+      Your smile lights up every room, and your laughter is pure magic. 🌟<br/><br/>
+      On this special day, I want you to know: you deserve every single good thing
+      coming your way — endless happiness, amazing adventures, beautiful memories,
+      and dreams that come true one by one. 🌈<br/><br/>
+      Here's to YOU — today, tomorrow, and always! 🥂🎂
+      <br/><br/><strong style="color:#ff4d8b;">Happy Birthday, Bestie! 🎉💖</strong>
+    </p>
+    <button class="popup-close" id="closeBtn">Close 💝</button>
+  </div>
+</div>
+
+<!-- Music toggle -->
+<button class="music-btn" id="musicBtn" title="Toggle music">🎵</button>
+
+<!-- Background music (royalty-free birthday melody via Web Audio API) -->
+<audio id="bgAudio" loop></audio>
+
+<script>
+// ── STARS ──
+(function() {
+  const layer = document.getElementById('starsLayer');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 5 + 2;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%; left:${Math.random()*100}%;
+      --d:${(Math.random()*3+1.5).toFixed(2)}s;
+      --delay:-${(Math.random()*4).toFixed(2)}s;
+    `;
+    layer.appendChild(s);
+  }
+})();
+
+// ── FLOATING EMOJIS ──
+(function() {
+  const emojis = ['🎈','🎀','🌸','💫','⭐','🎊','🎉','🌺','💕','🌷','🍭','🎂','🌟','✨','🎁','🦋'];
+  const layer = document.getElementById('floatLayer');
+  function addFloater() {
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const fs = (Math.random() * 26 + 18).toFixed(0);
+    const dur = (Math.random() * 8 + 7).toFixed(1);
+    el.style.cssText = `
+      left:${Math.random()*100}%;
+      --fs:${fs}px;
+      --dur:${dur}s;
+      --del:${(Math.random()*4).toFixed(1)}s;
+    `;
+    layer.appendChild(el);
+    setTimeout(() => el.remove(), (parseFloat(dur) + 4) * 1000);
+  }
+  for (let i = 0; i < 18; i++) setTimeout(addFloater, i * 400);
+  setInterval(addFloater, 900);
+})();
+
+// ── CONFETTI DOTS ──
+(function() {
+  const colors = ['#ff8fab','#c9b8ff','#ffb347','#a8edca','#ff4d8b','#ffd700','#87ceeb'];
+  const strip = document.getElementById('confettiStrip');
+  for (let i = 0; i < 14; i++) {
+    const d = document.createElement('div');
+    d.className = 'confetti-dot';
+    d.style.cssText = `background:${colors[i%colors.length]};
+      animation-delay:${(i*0.12).toFixed(2)}s;
+      animation-duration:${(1.2 + i*0.1).toFixed(1)}s;`;
+    strip.appendChild(d);
+  }
+})();
+
+// ── SPARKLE CURSOR TRAIL ──
+(function() {
+  const colors = ['#ff8fab','#c9b8ff','#ffb347','#ffd700','#ff4d8b','#a8edca'];
+  let last = 0;
+  document.addEventListener('mousemove', e => {
+    const now = Date.now();
+    if (now - last < 40) return;
+    last = now;
+    for (let i = 0; i < 2; i++) {
+      const s = document.createElement('div');
+      s.className = 'cursor-spark';
+      const size = Math.random() * 10 + 5;
+      s.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${e.clientX + (Math.random()-0.5)*16}px;
+        top:${e.clientY + (Math.random()-0.5)*16}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        box-shadow:0 0 8px currentColor;
+      `;
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 700);
+    }
+  });
+})();
+
+// ── GLITTER BURST on click anywhere ──
+document.addEventListener('click', e => {
+  if (e.target.closest('#overlay') || e.target.id === 'surpriseBtn') return;
+  for (let i = 0; i < 10; i++) {
+    const p = document.createElement('div');
+    p.className = 'glitter-particle';
+    const size = Math.random() * 8 + 4;
+    const colors = ['#ff8fab','#c9b8ff','#ffd700','#ffb347','#ff4d8b'];
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${e.clientX + (Math.random()-0.5)*30}px;
+      top:${e.clientY + (Math.random()-0.5)*30}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      --gd:${(Math.random()*0.8+0.4).toFixed(2)}s;
+    `;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 1200);
+  }
+});
+
+// ── POPUP ──
+const overlay    = document.getElementById('overlay');
+const surpriseBtn = document.getElementById('surpriseBtn');
+const closeBtn   = document.getElementById('closeBtn');
+
+surpriseBtn.addEventListener('click', () => {
+  overlay.classList.add('active');
+  launchConfetti();
+});
+closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+
+function launchConfetti() {
+  const colors = ['#ff8fab','#c9b8ff','#ffb347','#a8edca','#ff4d8b','#ffd700','#87ceeb'];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      const size = Math.random() * 10 + 5;
+      c.style.cssText = `
+        position:fixed;
+        width:${size}px; height:${size}px;
+        border-radius:${Math.random()>0.5?'50%':'3px'};
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        left:${Math.random()*100}vw;
+        top:-20px;
+        z-index:9998;
+        animation: confettiFall ${(Math.random()*2+1.5).toFixed(1)}s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+        pointer-events:none;
+      `;
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }, i * 50);
+  }
+}
+
+// inject confetti animation
+const confettiKf = document.createElement('style');
+confettiKf.textContent = `@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(${Math.random()*720}deg); opacity: 0; }
+}`;
+document.head.appendChild(confettiKf);
+
+// ══════════════════════════════════════════════════════
+//  🎼 HOLLYWOOD CINEMATIC PIANO + VIOLIN ENGINE
+//  Rich multi-layer: piano melody, violin soaring lead,
+//  cello bass, string pad, reverb hall, soft shimmer
+// ══════════════════════════════════════════════════════
+let audioCtx = null;
+let musicOn  = false;
+let allNodes = [];
+let loopTimer = null;
+
+// ── Reverb impulse builder (hall reverb simulation) ──
+function makeReverb(ctx, duration = 3.5, decay = 2.8) {
+  const rate    = ctx.sampleRate;
+  const length  = rate * duration;
+  const impulse = ctx.createBuffer(2, length, rate);
+  for (let c = 0; c < 2; c++) {
+    const d = impulse.getChannelData(c);
+    for (let i = 0; i < length; i++) {
+      d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
+    }
+  }
+  const conv = ctx.createConvolver();
+  conv.buffer = impulse;
+  return conv;
+}
+
+// ── Piano note: layered harmonics + soft attack + long decay ──
+function pianNote(ctx, dest, freq, startT, dur, vel = 0.55) {
+  const partials  = [1, 2, 3, 4, 5, 6, 7];
+  const ampRatios = [1, 0.5, 0.25, 0.15, 0.08, 0.04, 0.02];
+  const detuneMap = [0, 1.2, -0.8, 1.5, -1.0, 0.6, -0.4];
+
+  partials.forEach((p, i) => {
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = i === 0 ? 'triangle' : 'sine';
+    osc.frequency.value = freq * p;
+    osc.detune.value    = detuneMap[i];
+
+    const pk = vel * ampRatios[i];
+    gain.gain.setValueAtTime(0, startT);
+    gain.gain.linearRampToValueAtTime(pk, startT + 0.012);
+    gain.gain.exponentialRampToValueAtTime(pk * 0.6, startT + 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startT + dur * (0.9 - i * 0.08));
+
+    osc.connect(gain); gain.connect(dest);
+    osc.start(startT); osc.stop(startT + dur + 0.5);
+    allNodes.push(osc);
+  });
+}
+
+// ── Violin note: vibrato + bow pressure envelope ──
+function violinNote(ctx, dest, freq, startT, dur, vel = 0.38) {
+  // Carrier
+  const osc     = ctx.createOscillator();
+  const gain    = ctx.createGain();
+  osc.type      = 'sawtooth';
+  osc.frequency.value = freq;
+
+  // Vibrato LFO
+  const lfo     = ctx.createOscillator();
+  const lfoGain = ctx.createGain();
+  lfo.type      = 'sine';
+  lfo.frequency.value = 5.5 + Math.random() * 0.5;
+  lfoGain.gain.value  = freq * 0.012;
+  lfo.connect(lfoGain);
+  lfoGain.connect(osc.frequency);
+
+  // Bow envelope: slow attack like a real bow stroke
+  gain.gain.setValueAtTime(0, startT);
+  gain.gain.linearRampToValueAtTime(vel, startT + 0.18);
+  gain.gain.setValueAtTime(vel, startT + dur - 0.25);
+  gain.gain.linearRampToValueAtTime(0, startT + dur + 0.12);
+
+  // Highpass to thin it like a real violin
+  const hp = ctx.createBiquadFilter();
+  hp.type      = 'highpass';
+  hp.frequency.value = 300;
+
+  osc.connect(hp); hp.connect(gain); gain.connect(dest);
+  lfo.start(startT); lfo.stop(startT + dur + 0.5);
+  osc.start(startT); osc.stop(startT + dur + 0.5);
+  allNodes.push(osc, lfo);
+}
+
+// ── Cello bass note ──
+function celloNote(ctx, dest, freq, startT, dur, vel = 0.28) {
+  const osc  = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type   = 'sawtooth';
+  osc.frequency.value = freq;
+
+  const lp = ctx.createBiquadFilter();
+  lp.type = 'lowpass'; lp.frequency.value = 600;
+
+  gain.gain.setValueAtTime(0, startT);
+  gain.gain.linearRampToValueAtTime(vel, startT + 0.22);
+  gain.gain.setValueAtTime(vel * 0.85, startT + dur - 0.3);
+  gain.gain.linearRampToValueAtTime(0, startT + dur + 0.2);
+
+  osc.connect(lp); lp.connect(gain); gain.connect(dest);
+  osc.start(startT); osc.stop(startT + dur + 0.6);
+  allNodes.push(osc);
+}
+
+// ── String pad chord ──
+function padChord(ctx, dest, freqs, startT, dur, vel = 0.12) {
+  freqs.forEach(f => {
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type   = 'triangle';
+    osc.frequency.value = f;
+    osc.detune.value    = (Math.random() - 0.5) * 8;
+
+    gain.gain.setValueAtTime(0, startT);
+    gain.gain.linearRampToValueAtTime(vel, startT + 0.6);
+    gain.gain.setValueAtTime(vel, startT + dur - 0.5);
+    gain.gain.linearRampToValueAtTime(0, startT + dur);
+
+    osc.connect(gain); gain.connect(dest);
+    osc.start(startT); osc.stop(startT + dur + 0.5);
+    allNodes.push(osc);
+  });
+}
+
+// ── THE SCORE ──
+// Key of Eb major (cinematic feel): Eb F G Ab Bb C D Eb
+// Frequencies:
+const Eb3=155.56, Ab3=207.65, Bb3=233.08, C4=261.63, Db4=277.18,
+      Eb4=311.13, F4=349.23,  G4=392.00,  Ab4=415.30, Bb4=466.16,
+      C5=523.25,  D5=587.33,  Eb5=622.25, F5=698.46,  G5=783.99,
+      Ab5=830.61,
+      // Bass octave
+      Eb2=77.78, Ab2=103.83, Bb2=116.54, C3=130.81;
+
+// Hollywood-style score: piano lead + violin soaring melody + cello bass + string pads
+// [instrument, freq, startBeat, durationBeats, velocity]
+const BPM  = 66;
+const BEAT = 60 / BPM;
+
+const score = [
+  // === PHRASE 1 — piano intro, gentle ===
+  ['piano',  C4,  0.0, 1.0, 0.50],
+  ['piano',  C4,  1.0, 0.5, 0.45],
+  ['piano',  D5,  1.5, 1.0, 0.55],
+  ['piano',  C5,  2.5, 1.0, 0.55],
+  ['piano',  F5,  3.5, 1.5, 0.60],
+  ['piano',  Eb5, 5.0, 2.0, 0.58],
+
+  ['cello',  Eb2, 0.0, 2.0, 0.28],
+  ['cello',  Ab2, 2.0, 2.0, 0.28],
+  ['cello',  Bb2, 4.0, 3.0, 0.28],
+
+  ['pad', [Eb4,G4,Bb4],  0.0, 2.5, 0.10],
+  ['pad', [Ab3,C4,Eb4],  2.5, 2.5, 0.10],
+  ['pad', [Bb3,D5,F4],   5.0, 2.0, 0.09],
+
+  // === PHRASE 2 — violin enters soaring ===
+  ['piano',  Ab4, 7.0, 0.5, 0.48],
+  ['piano',  Ab4, 7.5, 0.5, 0.45],
+  ['piano',  Bb4, 8.0, 1.0, 0.52],
+  ['piano',  G4,  9.0, 1.0, 0.52],
+  ['piano',  C5, 10.0, 1.5, 0.56],
+  ['piano',  Bb4,11.5, 2.0, 0.56],
+
+  ['violin', C5,  7.0, 2.0, 0.36],
+  ['violin', Eb5, 9.0, 1.5, 0.40],
+  ['violin', F5, 10.5, 3.0, 0.44],
+
+  ['cello',  Ab2, 7.0, 2.0, 0.28],
+  ['cello',  Eb2, 9.0, 2.0, 0.28],
+  ['cello',  Bb2,11.0, 2.5, 0.30],
+
+  ['pad', [Ab3,C4,Eb4],  7.0, 2.5, 0.11],
+  ['pad', [Eb4,G4,Bb4],  9.5, 2.0, 0.10],
+  ['pad', [Bb3,Eb4,G4], 11.5, 2.0, 0.10],
+
+  // === PHRASE 3 — climax, violin + piano together ===
+  ['piano',  Eb5,13.5, 0.5, 0.60],
+  ['piano',  D5, 14.0, 0.5, 0.58],
+  ['piano',  C5, 14.5, 0.5, 0.58],
+  ['piano',  Bb4,15.0, 0.5, 0.56],
+  ['piano',  Ab4,15.5, 0.5, 0.56],
+  ['piano',  G4, 16.0, 1.0, 0.54],
+  ['piano',  Ab4,17.0, 1.5, 0.58],
+  ['piano',  Eb5,18.5, 2.0, 0.62],
+
+  ['violin', G5, 13.5, 1.0, 0.45],
+  ['violin', F5, 14.5, 1.0, 0.44],
+  ['violin', Eb5,15.5, 1.0, 0.45],
+  ['violin', D5, 16.5, 1.0, 0.44],
+  ['violin', Eb5,17.5, 3.0, 0.48],
+
+  ['cello',  C3, 13.5, 2.0, 0.32],
+  ['cello',  Ab2,15.5, 2.0, 0.32],
+  ['cello',  Eb2,17.5, 3.0, 0.34],
+
+  ['pad', [C4,Eb4,G4],  13.5, 2.0, 0.12],
+  ['pad', [Ab3,C4,Eb4], 15.5, 2.0, 0.12],
+  ['pad', [Eb4,G4,Bb4], 17.5, 3.0, 0.13],
+
+  // === PHRASE 4 — gentle resolution ===
+  ['piano',  F4, 20.5, 0.5, 0.50],
+  ['piano',  G4, 21.0, 0.5, 0.50],
+  ['piano',  Ab4,21.5, 1.0, 0.52],
+  ['piano',  G4, 22.5, 0.5, 0.50],
+  ['piano',  F4, 23.0, 0.5, 0.48],
+  ['piano',  Eb4,23.5, 2.0, 0.54],
+
+  ['violin', Eb5,20.5, 1.5, 0.38],
+  ['violin', C5, 22.0, 1.5, 0.38],
+  ['violin', Bb4,23.5, 2.0, 0.36],
+
+  ['cello',  Bb2,20.5, 2.0, 0.28],
+  ['cello',  Eb2,22.5, 3.0, 0.26],
+
+  ['pad', [Bb3,D5,F4],  20.5, 2.5, 0.10],
+  ['pad', [Eb4,G4,Bb4], 23.0, 2.5, 0.10],
+];
+
+const LOOP_BEATS = 26; // total score length in beats
+
+function buildMusic() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  // Master chain: compressor → reverb (wet/dry) → master gain
+  const master    = audioCtx.createGain();
+  master.gain.value = 0.72;
+
+  const comp      = audioCtx.createDynamicsCompressor();
+  comp.threshold.value = -18;
+  comp.knee.value      = 10;
+  comp.ratio.value     = 4;
+  comp.attack.value    = 0.004;
+  comp.release.value   = 0.25;
+
+  const reverb    = makeReverb(audioCtx, 4.0, 3.2);
+  const reverbGain= audioCtx.createGain();
+  reverbGain.gain.value = 0.38;
+
+  const dryGain   = audioCtx.createGain();
+  dryGain.gain.value = 0.72;
+
+  // Routing: instruments → comp → dry + reverb wet → master → destination
+  comp.connect(dryGain);      dryGain.connect(master);
+  comp.connect(reverb);       reverb.connect(reverbGain); reverbGain.connect(master);
+  master.connect(audioCtx.destination);
+
+  function scheduleLoop(offsetBeats) {
+    if (!musicOn) return;
+    const startT = audioCtx.currentTime + 0.05;
+    const loopDur = LOOP_BEATS * BEAT;
+
+    score.forEach(([inst, freqOrFreqs, beatStart, beatDur, vel]) => {
+      const t   = startT + beatStart * BEAT;
+      const dur = beatDur * BEAT;
+      if      (inst === 'piano')  pianNote(audioCtx, comp, freqOrFreqs, t, dur, vel);
+      else if (inst === 'violin') violinNote(audioCtx, comp, freqOrFreqs, t, dur, vel);
+      else if (inst === 'cello')  celloNote(audioCtx, comp, freqOrFreqs, t, dur, vel);
+      else if (inst === 'pad')    padChord(audioCtx, comp, freqOrFreqs, t, dur, vel);
+    });
+
+    // Fade in at start
+    master.gain.setValueAtTime(0, startT);
+    master.gain.linearRampToValueAtTime(0.72, startT + 2.5);
+
+    loopTimer = setTimeout(() => scheduleLoop(offsetBeats + LOOP_BEATS), (loopDur - 0.3) * 1000);
+  }
+
+  scheduleLoop(0);
+}
+
+function stopMusic() {
+  clearTimeout(loopTimer);
+  allNodes.forEach(n => { try { n.stop(0); } catch(e) {} });
+  allNodes = [];
+  if (audioCtx) { audioCtx.close(); audioCtx = null; }
+}
+
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', () => {
+  musicOn = !musicOn;
+  if (musicOn) { buildMusic(); musicBtn.textContent = '🔊'; musicBtn.title = 'Mute music'; }
+  else         { stopMusic();  musicBtn.textContent = '🎵'; musicBtn.title = 'Play music'; }
+});
+
+// Auto-start on first user interaction
+document.addEventListener('click', () => {
+  if (!musicOn) {
+    musicOn = true;
+    buildMusic();
+    musicBtn.textContent = '🔊';
+  }
+}, { once: true });
+</script>
+</body>
+</html>
